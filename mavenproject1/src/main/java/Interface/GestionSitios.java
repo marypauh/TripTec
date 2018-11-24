@@ -16,9 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class GestionSitios extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GestionSitios
-     */
+    Api api = new Api();
+    
     public GestionSitios() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -34,15 +33,16 @@ public class GestionSitios extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         fieldLat = new javax.swing.JTextField();
         fieldLong = new javax.swing.JTextField();
-        fieldDirection = new javax.swing.JTextField();
-        btnSearch = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnMenu = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        fieldDirection = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -53,10 +53,6 @@ public class GestionSitios extends javax.swing.JFrame {
         jLabel1.setText("Gestionar Sitios Turísticos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Latitud");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 72, -1, -1));
-
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Longitud");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 133, -1, -1));
@@ -64,19 +60,15 @@ public class GestionSitios extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Dirección");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 189, -1, -1));
-        getContentPane().add(fieldLat, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 69, 192, -1));
-        getContentPane().add(fieldLong, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 130, 192, -1));
-        getContentPane().add(fieldDirection, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 186, 192, -1));
+        getContentPane().add(fieldLat, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 69, 240, -1));
+        getContentPane().add(fieldLong, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 130, 240, -1));
 
-        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
-        btnSearch.setForeground(new java.awt.Color(0, 153, 153));
-        btnSearch.setText("Registrar");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Latitud");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         btnMenu.setBackground(new java.awt.Color(255, 255, 255));
         btnMenu.setForeground(new java.awt.Color(0, 153, 153));
@@ -86,18 +78,33 @@ public class GestionSitios extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
+        btnSearch.setForeground(new java.awt.Color(0, 153, 153));
+        btnSearch.setText("Registrar");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
+
+        fieldDirection.setColumns(20);
+        fieldDirection.setRows(5);
+        jScrollPane1.setViewportView(fieldDirection);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 250, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        if (fieldLat.getText() != "" && fieldLong.getText() != "" ){
-            Api api = new Api();
+        
+        if (!fieldLat.getText().isEmpty() && !fieldLong.getText().isEmpty()){
+            //buscar direccion
             double lat = Double.parseDouble(fieldLat.getText());
             double lng = Double.parseDouble(fieldLong.getText());
             try {
@@ -106,10 +113,19 @@ public class GestionSitios extends javax.swing.JFrame {
                 Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
             }
         
-        } else if (fieldDirection.getText() != ""){
-        //Busca la lomgitud y latitud de la direccion indicada
-        
-        }else {
+        }
+        else if(!fieldDirection.getText().isEmpty()){
+            try {
+                //Busca la longitud y latitud de la direccion indicada
+
+                fieldLat.setText(api.geocodelat(fieldDirection.getText()));
+                
+                fieldLong.setText(api.geocodelng(fieldDirection.getText()));
+            } catch (Exception ex) {
+                Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else 
+        {
         JOptionPane.showMessageDialog(null, "Debe ingresar la longitud y latitud o ingresar la dirección del sitio");
         }
     }//GEN-LAST:event_btnSearchActionPerformed
@@ -126,7 +142,7 @@ public class GestionSitios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JTextField fieldDirection;
+    private javax.swing.JTextArea fieldDirection;
     private javax.swing.JTextField fieldLat;
     private javax.swing.JTextField fieldLong;
     private javax.swing.JLabel jLabel1;
@@ -134,5 +150,6 @@ public class GestionSitios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

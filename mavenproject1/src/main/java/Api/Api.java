@@ -138,10 +138,10 @@ public class Api {
         try {
             results = GeocodingApi.geocode(context, address).await();
             final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            this.lat = gson.toJson(results[0].geometry.location.lng);
+            this.lng = gson.toJson(results[0].geometry.location.lng);
     }   catch (final Exception e) {
             throw e;
     }
-        return lng;
+    return lng;
 }
 }
