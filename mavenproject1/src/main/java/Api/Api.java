@@ -77,7 +77,10 @@ public class Api {
 		}
 		outFile.close();
     }
-    private void lookupCoord(String establishment) throws ApiException, InterruptedException, IOException {   //Recibe lugar exacto y da latitud y longitd
+    
+    private String result;
+    
+    public void lookupCoord(String establishment) throws ApiException, InterruptedException, IOException {   //Recibe lugar exacto y da latitud y longitd
 		
 	//set up key
 	GeoApiContext lookupDoodad = new GeoApiContext.Builder()
@@ -98,7 +101,7 @@ public class Api {
         System.out.println("Longitude:  "+lng);       
     }
     
-    private void reverseGeocode(final double latitude, final double longitude) throws Exception { //Recibe latitud y longitud
+    public void reverseGeocode(final double latitude, final double longitude) throws Exception { //Recibe latitud y longitud
     final GeoApiContext context = new GeoApiContext.Builder()
             .apiKey(APIKEY)
             .build();
@@ -107,15 +110,13 @@ public class Api {
     try {
         results = GeocodingApi.reverseGeocode(context, latlng).await();
         final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            this.lat = gson.toJson(results[0].geometry.location.lat);
-            this.lng = gson.toJson(results[0].geometry.location.lng);
+            this.result = gson.toJson(results[0].formattedAddress);
     }   catch (final Exception e) {
             throw e;
     }
-        System.out.println("Latitude:  "+lat);
-        System.out.println("Longitude:  "+lng);
+    System.out.println(result);
 } 
-    private void geocode(final String address) throws Exception {
+    public void geocodelat(final String address) throws Exception {      //Devuelve latitud
         final GeoApiContext context = new GeoApiContext.Builder()
             .apiKey(APIKEY)
             .build();
@@ -124,11 +125,23 @@ public class Api {
             results = GeocodingApi.geocode(context, address).await();
             final Gson gson = new GsonBuilder().setPrettyPrinting().create();
             this.lat = gson.toJson(results[0].geometry.location.lat);
-            this.lng = gson.toJson(results[0].geometry.location.lng);
     }   catch (final Exception e) {
             throw e;
     }
-        System.out.println("Latitude:  "+lat);
-        System.out.println("Longitude:  "+lng);
+        System.out.println(lat);
+}
+    public void geocodelng(final String address) throws Exception {      //Devuelve longitud
+        final GeoApiContext context = new GeoApiContext.Builder()
+            .apiKey(APIKEY)
+            .build();
+        final GeocodingResult[] results;
+        try {
+            results = GeocodingApi.geocode(context, address).await();
+            final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            this.lat = gson.toJson(results[0].geometry.location.lng);
+    }   catch (final Exception e) {
+            throw e;
+    }
+        System.out.println(lng);
 }
 }
