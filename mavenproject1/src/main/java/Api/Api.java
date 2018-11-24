@@ -101,7 +101,7 @@ public class Api {
         System.out.println("Longitude:  "+lng);       
     }
     
-    public void reverseGeocode(final double latitude, final double longitude) throws Exception { //Recibe latitud y longitud
+    public String reverseGeocode(final double latitude, final double longitude) throws Exception { //Recibe latitud y longitud
     final GeoApiContext context = new GeoApiContext.Builder()
             .apiKey(APIKEY)
             .build();
@@ -114,9 +114,9 @@ public class Api {
     }   catch (final Exception e) {
             throw e;
     }
-    System.out.println(result);
+        return result;
 } 
-    public void geocodelat(final String address) throws Exception {      //Devuelve latitud
+    public String geocodelat(final String address) throws Exception {      //Devuelve latitud
         final GeoApiContext context = new GeoApiContext.Builder()
             .apiKey(APIKEY)
             .build();
@@ -128,9 +128,9 @@ public class Api {
     }   catch (final Exception e) {
             throw e;
     }
-        System.out.println(lat);
+        return lat;
 }
-    public void geocodelng(final String address) throws Exception {      //Devuelve longitud
+    public String geocodelng(final String address) throws Exception {      //Devuelve longitud
         final GeoApiContext context = new GeoApiContext.Builder()
             .apiKey(APIKEY)
             .build();
@@ -142,6 +142,6 @@ public class Api {
     }   catch (final Exception e) {
             throw e;
     }
-        System.out.println(lng);
+        return lng;
 }
 }

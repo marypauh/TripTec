@@ -5,6 +5,9 @@
  */
 package Interface;
 
+import Api.Api;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -67,7 +70,7 @@ public class GestionSitios extends javax.swing.JFrame {
 
         btnSearch.setBackground(new java.awt.Color(255, 255, 255));
         btnSearch.setForeground(new java.awt.Color(0, 153, 153));
-        btnSearch.setText("Buscar");
+        btnSearch.setText("Registrar");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
@@ -94,7 +97,14 @@ public class GestionSitios extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         if (fieldLat.getText() != "" && fieldLong.getText() != "" ){
-        //Accion que busca la direccion en el grafo
+            Api api = new Api();
+            double lat = Double.parseDouble(fieldLat.getText());
+            double lng = Double.parseDouble(fieldLong.getText());
+            try {
+                fieldDirection.setText(api.reverseGeocode(lat,lng));
+            } catch (Exception ex) {
+                Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
         } else if (fieldDirection.getText() != ""){
         //Busca la lomgitud y latitud de la direccion indicada
