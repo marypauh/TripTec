@@ -6,9 +6,14 @@
 package Interface;
 
 import Api.Api;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import TextFile.TextFile;
+import java.io.File;
 
 /**
  *
@@ -17,6 +22,7 @@ import javax.swing.JOptionPane;
 public class GestionSitios extends javax.swing.JFrame {
 
     Api api = new Api();
+    TextFile txt = new TextFile();
     
     public GestionSitios() {
         initComponents();
@@ -32,43 +38,42 @@ public class GestionSitios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        fieldLat = new javax.swing.JTextField();
-        fieldLong = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnMenu = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         fieldDirection = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        fieldLong = new javax.swing.JTextField();
+        fieldLat = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        fieldName = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        fieldDescription = new javax.swing.JTextArea();
+        fieldPrice = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        fieldAct = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Gestionar Sitios Turísticos");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
-
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Longitud");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 133, -1, -1));
-
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Dirección");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 189, -1, -1));
-        getContentPane().add(fieldLat, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 69, 240, -1));
-        getContentPane().add(fieldLong, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 130, 240, -1));
-
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Latitud");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         btnMenu.setBackground(new java.awt.Color(255, 255, 255));
         btnMenu.setForeground(new java.awt.Color(0, 153, 153));
@@ -78,7 +83,7 @@ public class GestionSitios extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, -1, -1));
 
         btnSearch.setBackground(new java.awt.Color(255, 255, 255));
         btnSearch.setForeground(new java.awt.Color(0, 153, 153));
@@ -88,21 +93,84 @@ public class GestionSitios extends javax.swing.JFrame {
                 btnSearchActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
+        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, -1, -1));
 
         fieldDirection.setColumns(20);
         fieldDirection.setRows(5);
         jScrollPane1.setViewportView(fieldDirection);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 250, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 490, 110));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 340));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Dirección");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Longitud");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+        jPanel1.add(fieldLong, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 180, -1));
+        jPanel1.add(fieldLat, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 170, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Precio");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Actividades");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Descripcion");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Nombre");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        jPanel1.add(fieldName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 170, -1));
+
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Gestionar Sitios Turísticos");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+
+        fieldDescription.setColumns(20);
+        fieldDescription.setRows(5);
+        jScrollPane2.setViewportView(fieldDescription);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 170, -1));
+        jPanel1.add(fieldPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 180, -1));
+
+        fieldAct.setColumns(20);
+        fieldAct.setRows(5);
+        jScrollPane3.setViewportView(fieldAct);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 180, -1));
+
+        jButton1.setForeground(new java.awt.Color(0, 153, 153));
+        jButton1.setText("Eliminar");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, -1, -1));
+
+        jButton2.setForeground(new java.awt.Color(0, 153, 153));
+        jButton2.setText("Consultar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        
         if (!fieldLat.getText().isEmpty() && !fieldLong.getText().isEmpty()){
             //buscar direccion
             double lat = Double.parseDouble(fieldLat.getText());
@@ -112,21 +180,25 @@ public class GestionSitios extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
         }
         else if(!fieldDirection.getText().isEmpty()){
             try {
                 //Busca la longitud y latitud de la direccion indicada
-
+                
                 fieldLat.setText(api.geocodelat(fieldDirection.getText()));
                 
                 fieldLong.setText(api.geocodelng(fieldDirection.getText()));
             } catch (Exception ex) {
                 Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else 
+        }else
         {
-        JOptionPane.showMessageDialog(null, "Debe ingresar la longitud y latitud o ingresar la dirección del sitio");
+            JOptionPane.showMessageDialog(null, "Debe ingresar la longitud y latitud o ingresar la dirección del sitio");
+        }
+        try {
+            txt.TextFile("Nombre del lugar:  "+fieldName.getText()+"  "+"Descripcion:  "+fieldDescription.getText()+"  "+"Precio:  "+fieldPrice.getText()+"  "+"Actividades:  "+fieldName.getText()+"  "+"Latitud: "+fieldLat.getText()+"  "+"Longitud:  "+fieldLong.getText()+"   "+"Dirección:  "+fieldDirection.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -136,20 +208,43 @@ public class GestionSitios extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Consult window;
+        try {
+            window = new Consult();
+            window.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JTextArea fieldAct;
+    private javax.swing.JTextArea fieldDescription;
     private javax.swing.JTextArea fieldDirection;
     private javax.swing.JTextField fieldLat;
     private javax.swing.JTextField fieldLong;
+    private javax.swing.JTextField fieldName;
+    private javax.swing.JTextField fieldPrice;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
