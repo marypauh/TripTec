@@ -6,6 +6,7 @@
 package Interface;
 
 import Structures.Clients;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,61 +31,39 @@ public class Informacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitulo = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
+        textCorreo = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnRegistrar = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
+        BtnBusqueda = new javax.swing.JToggleButton();
+        BtnAVisitar = new javax.swing.JToggleButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        textTelefono = new javax.swing.JTextField();
+        textID = new javax.swing.JTextField();
+        textNombre = new javax.swing.JTextField();
+        textFecha = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
         lblCedula = new javax.swing.JLabel();
         lblTelefono = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
-        lblFecha = new javax.swing.JLabel();
-        textNombre = new javax.swing.JTextField();
-        textID = new javax.swing.JTextField();
-        textTelefono = new javax.swing.JTextField();
-        textCorreo = new javax.swing.JTextField();
-        textFecha = new javax.swing.JTextField();
-        btnRegistrar = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitulo.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setText("Información Clientes");
-        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
-
-        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombre.setText("Nombre:");
-        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-
-        lblCedula.setForeground(new java.awt.Color(255, 255, 255));
-        lblCedula.setText("Cédula: ");
-        getContentPane().add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
-
-        lblTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        lblTelefono.setText("Teléfono:");
-        getContentPane().add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
-
-        lblCorreo.setForeground(new java.awt.Color(255, 255, 255));
-        lblCorreo.setText("Correo Electrónico:");
-        getContentPane().add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
-
         lblFecha.setForeground(new java.awt.Color(255, 255, 255));
         lblFecha.setText("Fecha de Nacimiento:");
         getContentPane().add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
-
-        textNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textNombreActionPerformed(evt);
-            }
-        });
-        getContentPane().add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 130, -1));
-        getContentPane().add(textID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 130, -1));
-        getContentPane().add(textTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 130, -1));
         getContentPane().add(textCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 140, -1));
-        getContentPane().add(textFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 120, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        jLabel1.setText("Ingrese el número de cédula sin espacion ni guiones");
 
         btnRegistrar.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setForeground(new java.awt.Color(0, 153, 153));
@@ -94,7 +73,6 @@ public class Informacion extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, -1, -1));
 
         btnMenu.setBackground(new java.awt.Color(255, 255, 255));
         btnMenu.setForeground(new java.awt.Color(0, 153, 153));
@@ -104,19 +82,135 @@ public class Informacion extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        BtnBusqueda.setText("Consultar Cliente existente");
+        BtnBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBusquedaActionPerformed(evt);
+            }
+        });
+
+        BtnAVisitar.setText("Agregar lugares a visitar");
+        BtnAVisitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAVisitarActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Gestión de Clientes registrados");
+
+        textNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textNombreActionPerformed(evt);
+            }
+        });
+
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre.setText("Nombre:");
+
+        lblCedula.setForeground(new java.awt.Color(255, 255, 255));
+        lblCedula.setText("Cédula: ");
+
+        lblTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        lblTelefono.setText("Teléfono:");
+
+        lblCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        lblCorreo.setText("Correo Electrónico:");
+
+        lblTitulo.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Gestión de Clientes");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCedula, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTelefono, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(textID))
+                        .addGap(83, 83, 83)
+                        .addComponent(btnRegistrar))
+                    .addComponent(textFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(297, 297, 297))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(BtnAVisitar)
+                        .addGap(78, 78, 78)
+                        .addComponent(BtnBusqueda))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(465, 465, 465)
+                                .addComponent(btnMenu))
+                            .addComponent(jLabel1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(lblNombre)
+                        .addGap(58, 58, 58)
+                        .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(lblCorreo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(lblTitulo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblTitulo)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(btnRegistrar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCedula))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTelefono))))
+                .addGap(26, 26, 26)
+                .addComponent(lblCorreo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(textFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnBusqueda)
+                    .addComponent(BtnAVisitar))
+                .addGap(18, 18, 18)
+                .addComponent(btnMenu)
+                .addGap(15, 15, 15))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 490));
@@ -136,26 +230,38 @@ public class Informacion extends javax.swing.JFrame {
          String date = textFecha.getText();
          String mail = textCorreo.getText();
          int ID = Integer.parseInt(textID.getText());
-         //falta crear grafo con lugares a visitar
          
          Clients client = new Clients( name,  tel, mail, date, ID);
          Main.Main.clientsTree.insert(client);
          Main.Main.clientsTree.enOrden();
-//HELPPPPPPP
+         JOptionPane.showMessageDialog(null, "Se ha registrado el cliente con la cédula:" + ID + "exitosamente");
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void textNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textNombreActionPerformed
 
+    private void BtnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnBusquedaActionPerformed
+
+    private void BtnAVisitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAVisitarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnAVisitarActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton BtnAVisitar;
+    private javax.swing.JToggleButton BtnBusqueda;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblFecha;
