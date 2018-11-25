@@ -35,7 +35,7 @@ public class Informacion extends javax.swing.JFrame {
         lblCorreo = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
         textNombre = new javax.swing.JTextField();
-        textCedula = new javax.swing.JTextField();
+        textID = new javax.swing.JTextField();
         textTelefono = new javax.swing.JTextField();
         textCorreo = new javax.swing.JTextField();
         textFecha = new javax.swing.JTextField();
@@ -72,8 +72,14 @@ public class Informacion extends javax.swing.JFrame {
         lblFecha.setForeground(new java.awt.Color(255, 255, 255));
         lblFecha.setText("Fecha de Nacimiento:");
         getContentPane().add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        textNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textNombreActionPerformed(evt);
+            }
+        });
         getContentPane().add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 130, -1));
-        getContentPane().add(textCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 130, -1));
+        getContentPane().add(textID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 130, -1));
         getContentPane().add(textTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 130, -1));
         getContentPane().add(textCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 140, -1));
         getContentPane().add(textFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 120, -1));
@@ -81,6 +87,11 @@ public class Informacion extends javax.swing.JFrame {
         btnRegistrar.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setForeground(new java.awt.Color(0, 153, 153));
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, -1, -1));
 
         btnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -117,6 +128,21 @@ public class Informacion extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+         String name = textNombre.getText();
+         String tel = textTelefono.getText();
+         String fecha = textFecha.getText();
+         String mail = textCorreo.getText();
+         int ID = Integer.parseInt(textID.getText());
+         
+        
+         
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void textNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textNombreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -131,9 +157,9 @@ public class Informacion extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JTextField textCedula;
     private javax.swing.JTextField textCorreo;
     private javax.swing.JTextField textFecha;
+    private javax.swing.JTextField textID;
     private javax.swing.JTextField textNombre;
     private javax.swing.JTextField textTelefono;
     // End of variables declaration//GEN-END:variables
