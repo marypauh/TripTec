@@ -12,17 +12,17 @@ package Structures;
 import java.util.* ;
 
 public class VertexNode {
-    public int vertex;                    //Storage the vertex
+    public Site vertex;                    //Storage the vertex
     public boolean visited;            //Indicates if the vertex is visited or not
     public LinkedList <Node> edges;    //List of edges
 
     public VertexNode(){
-        this.vertex = 0;
+        this.vertex = null;
         this.visited = false;
         this.edges  = new LinkedList<>();
     }
 
-    public VertexNode(int v){
+    public VertexNode(Site v){
             this.vertex = v;
             this.visited = false;
             this.edges  = new LinkedList<>();
