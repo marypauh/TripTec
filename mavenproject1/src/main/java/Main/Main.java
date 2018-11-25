@@ -1,10 +1,12 @@
 package Main;
 
 import Interface.Menu;
+import Structures.ABB;
 
 
 
 public class Main {
+       public static ABB clientsTree = new ABB();
 
     public static void main(String[] args) throws Exception {
         Menu menu = new Menu();
