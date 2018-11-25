@@ -3,12 +3,14 @@ package Main;
 import Interface.Menu;
 import Structures.ABB;
 import Structures.GestionSites;
+import Structures.ClientTour;
 
 
 
 public class Main {
        public static ABB clientsTree = new ABB();
        public static GestionSites sites = new GestionSites();
+       public static ClientTour tour = new ClientTour();
        public static int contador = 0;
 
     public static void main(String[] args) throws Exception {

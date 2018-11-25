@@ -89,6 +89,11 @@ public class Menu extends javax.swing.JFrame {
         btnTourC.setBackground(new java.awt.Color(255, 255, 255));
         btnTourC.setForeground(new java.awt.Color(0, 153, 153));
         btnTourC.setText("Tour Cliente");
+        btnTourC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTourCActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnTourC, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, -2, 460, 300));
@@ -127,6 +132,19 @@ public class Menu extends javax.swing.JFrame {
         info.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnInfoActionPerformed
+
+    private void btnTourCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTourCActionPerformed
+        Client cliente = new Client();
+        cliente.setVisible(true);
+        this.setVisible(false);
+        
+         cliente.setGestion_cliente(Main.tour);// global lista
+        
+        Object[] columnasSitios = new Object[] {"Id","Nombre","Precio","Descripcion","Actividades","Latitud", "Longitud", "Direccion"};        
+        cliente.getTabla_cliente().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));
+        cliente.getTabla_cliente().setAutoCreateRowSorter(true);
+        cliente.actualizarTabla();
+    }//GEN-LAST:event_btnTourCActionPerformed
 
     /**
      * @param args the command line arguments
