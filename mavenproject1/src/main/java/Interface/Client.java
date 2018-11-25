@@ -104,12 +104,12 @@ public class Client extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         fieldAddress1 = new javax.swing.JTextField();
         fieldaddress2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnOrigen = new javax.swing.JButton();
+        btnDestino = new javax.swing.JButton();
         txtide1 = new javax.swing.JTextField();
         txtid2 = new javax.swing.JTextField();
         txtName2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        btnTour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -165,7 +165,7 @@ public class Client extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Duración");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, -1, -1));
         jPanel1.add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 100, -1));
 
         btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
@@ -176,7 +176,7 @@ public class Client extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, -1, -1));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
 
         txtName.setText("jTextField1");
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, -1, -1));
@@ -187,23 +187,23 @@ public class Client extends javax.swing.JFrame {
         fieldaddress2.setText("jTextField1");
         jPanel1.add(fieldaddress2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, -1, -1));
 
-        jButton1.setForeground(new java.awt.Color(0, 153, 153));
-        jButton1.setText("Elegir origen");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnOrigen.setForeground(new java.awt.Color(0, 153, 153));
+        btnOrigen.setText("Elegir origen");
+        btnOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnOrigenActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, -1, -1));
+        jPanel1.add(btnOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
 
-        jButton2.setForeground(new java.awt.Color(0, 153, 153));
-        jButton2.setText("Elegir Destino");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnDestino.setForeground(new java.awt.Color(0, 153, 153));
+        btnDestino.setText("Elegir Destino");
+        btnDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnDestinoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
+        jPanel1.add(btnDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
 
         txtide1.setText("jTextField1");
         jPanel1.add(txtide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, -1, -1));
@@ -214,14 +214,14 @@ public class Client extends javax.swing.JFrame {
         txtName2.setText("jTextField1");
         jPanel1.add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, -1, -1));
 
-        jButton3.setForeground(new java.awt.Color(0, 153, 153));
-        jButton3.setText("Ver Tour");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnTour.setForeground(new java.awt.Color(0, 153, 153));
+        btnTour.setText("Ver Tour");
+        btnTour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnTourActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
+        jPanel1.add(btnTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 480));
 
@@ -266,7 +266,7 @@ public class Client extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrigenActionPerformed
         int indice = tabla_cliente.getSelectedRow();
         String data = (String)tabla_cliente.getValueAt(indice, 7);
         fieldAddress1.setText(data);
@@ -274,9 +274,9 @@ public class Client extends javax.swing.JFrame {
         txtName.setText(name);
         String id = (String)tabla_cliente.getValueAt(indice,0);
         txtide1.setText(id);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnOrigenActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDestinoActionPerformed
         int indice = tabla_cliente.getSelectedRow();
         String data = (String)tabla_cliente.getValueAt(indice, 7);
         fieldaddress2.setText(data);
@@ -284,12 +284,13 @@ public class Client extends javax.swing.JFrame {
         txtid2.setText(id);
         String name = (String)tabla_cliente.getValueAt(indice, 1);
         txtName2.setText(name);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnDestinoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Tour clienttour = new Tour(txtName.getText(),txtName.getText(),txtName2.getText(),fieldAddress1.getText());
+    private void btnTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTourActionPerformed
+        Tour clienttour = new Tour();
         clienttour.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnTourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,12 +299,12 @@ public class Client extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnDestino;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnOrigen;
+    private javax.swing.JButton btnTour;
     private javax.swing.JTextField fieldAddress1;
     private javax.swing.JTextField fieldaddress2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
