@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Structures.Clients;
+
 /**
  *
  * @author marip
@@ -131,12 +133,15 @@ public class Informacion extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
          String name = textNombre.getText();
          String tel = textTelefono.getText();
-         String fecha = textFecha.getText();
+         String date = textFecha.getText();
          String mail = textCorreo.getText();
          int ID = Integer.parseInt(textID.getText());
+         //falta crear grafo con lugares a visitar
          
-        
-         
+         Clients client = new Clients( name,  tel, mail, date, ID);
+         Main.Main.clientsTree.insert(client);
+         Main.Main.clientsTree.enOrden();
+//HELPPPPPPP
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void textNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreActionPerformed

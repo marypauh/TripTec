@@ -53,6 +53,9 @@ public class ABB {
             }
         }
     }
+    public Clients getRoot(){
+    return raiz;
+    }
 
     public ABB search( int id ) {
         ABB searched = null;
