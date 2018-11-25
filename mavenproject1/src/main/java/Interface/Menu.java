@@ -5,6 +5,9 @@
  */
 package Interface;
 
+import Table.ModeladorTablas;
+import Main.Main;
+
 /**
  *
  * @author marip
@@ -101,6 +104,13 @@ public class Menu extends javax.swing.JFrame {
         GestionSitios gestion = new GestionSitios();
         gestion.setVisible(true);
         this.setVisible(false);
+        
+         gestion.setGestion_sitio(Main.sites);// global lista
+        
+        Object[] columnasSitios = new Object[] {"Id","Nombre","Precio","Descripcion","Actividades","Latitud", "Longitud", "Direccion"};        
+        gestion.getTabla_sitios().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));
+        gestion.getTabla_sitios().setAutoCreateRowSorter(true);
+        gestion.actualizarTabla();
     }//GEN-LAST:event_btnGestionActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed

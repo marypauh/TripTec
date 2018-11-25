@@ -2,11 +2,14 @@ package Main;
 
 import Interface.Menu;
 import Structures.ABB;
+import Structures.GestionSites;
 
 
 
 public class Main {
        public static ABB clientsTree = new ABB();
+       public static GestionSites sites = new GestionSites();
+       public static int contador = 0;
 
     public static void main(String[] args) throws Exception {
         Menu menu = new Menu();

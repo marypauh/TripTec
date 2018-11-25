@@ -21,7 +21,7 @@ public class Graph {
     }
 
     //Método para agregar un vértice al grafo
-    public void addVertex(Site v){
+    public void addVertex(int v){
         vertex.add(new VertexNode(v));  //Agrega el vértice al final de la lista de vértices
     }
 

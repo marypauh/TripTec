@@ -1,6 +1,7 @@
 package Structures;
 
 public class Site {
+    private String id;
     private String name;
     private String price;
     private String description;
@@ -9,7 +10,8 @@ public class Site {
     private String lng;
     private String address;
 
-    public Site(String name, String price, String description, String activities, String lat, String lng, String address) {
+    public Site(String id, String name, String price, String description, String activities, String lat, String lng, String address) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -18,6 +20,15 @@ public class Site {
         this.lng = lng;
         this.address = address;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
 
     public String getName() {
         return name;
@@ -77,7 +88,7 @@ public class Site {
 
     @Override
     public String toString() {
-        return "Site: " + "name:" + name + ", price:" + price + ", description:" + description + ", activities:" + activities + ", lat:" + lat + ", lng:" + lng + ", address:" + address;
+        return "Vertex: " + id+"Site: " + "name:" + name + ", price:" + price + ", description:" + description + ", activities:" + activities + ", lat:" + lat + ", lng:" + lng + ", address:" + address;
     }
     
    
