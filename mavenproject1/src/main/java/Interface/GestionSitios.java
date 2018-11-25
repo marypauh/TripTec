@@ -35,11 +35,6 @@ public class GestionSitios extends javax.swing.JFrame {
     Api api = new Api();
    TextFile txt = new TextFile();
    
-   public Graph grafo;
-   
-   public Graph getGraph(){
-        return grafo;
-   }
    
     public GestionSites gestion_sitio; // DEBE ESTAR DECLARADO E INICIALIZADO 
 
@@ -309,7 +304,8 @@ public class GestionSitios extends javax.swing.JFrame {
         this.getGestion_sitios().createSites(id2, name, price, description, activities, lat, lng,address);
         this.actualizarTabla();
         
-        this.getGraph().addVertex(id);
+        Graph graph = new Graph();
+        graph.addVertex(id);
         
         
         

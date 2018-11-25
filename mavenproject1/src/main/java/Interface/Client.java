@@ -5,10 +5,15 @@
  */
 
 package Interface;
+import Api.Api;
 import Structures.ClientTour;
 import Structures.ListNode;
 import Structures.Site;
 import Table.ModeladorTablas;
+import com.google.maps.errors.ApiException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 
 /**
@@ -16,9 +21,10 @@ import javax.swing.JTable;
  * @author marip
  */
 public class Client extends javax.swing.JFrame {
+    Api api = new Api();
     
     
-     public ClientTour gestion_cliente; // DEBE ESTAR DECLARADO E INICIALIZADO 
+    public ClientTour gestion_cliente; // DEBE ESTAR DECLARADO E INICIALIZADO 
 
     public ClientTour getGestion_cliente() {
         return gestion_cliente;
@@ -95,6 +101,15 @@ public class Client extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtDuracion = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
+        fieldAddress1 = new javax.swing.JTextField();
+        fieldaddress2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        txtide1 = new javax.swing.JTextField();
+        txtid2 = new javax.swing.JTextField();
+        txtName2 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -113,7 +128,7 @@ public class Client extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla_cliente);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 375, 275));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 560, 275));
 
         lblTitulo.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,7 +146,7 @@ public class Client extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, -1, -1));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
 
         btnMenu.setBackground(new java.awt.Color(255, 255, 255));
         btnMenu.setForeground(new java.awt.Color(0, 153, 153));
@@ -141,17 +156,17 @@ public class Client extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, -1, -1));
-        jPanel1.add(txtDistancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 110, -1));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
+        jPanel1.add(txtDistancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 110, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Distancia");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Duración");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, -1, -1));
-        jPanel1.add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 100, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, -1, -1));
+        jPanel1.add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 100, -1));
 
         btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
         btnActualizar.setForeground(new java.awt.Color(0, 153, 153));
@@ -161,9 +176,54 @@ public class Client extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 480));
+        txtName.setText("jTextField1");
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, -1, -1));
+
+        fieldAddress1.setText("jTextField1");
+        jPanel1.add(fieldAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
+
+        fieldaddress2.setText("jTextField1");
+        jPanel1.add(fieldaddress2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, -1, -1));
+
+        jButton1.setForeground(new java.awt.Color(0, 153, 153));
+        jButton1.setText("Elegir origen");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, -1, -1));
+
+        jButton2.setForeground(new java.awt.Color(0, 153, 153));
+        jButton2.setText("Elegir Destino");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
+
+        txtide1.setText("jTextField1");
+        jPanel1.add(txtide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, -1, -1));
+
+        txtid2.setText("jTextField1");
+        jPanel1.add(txtid2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
+
+        txtName2.setText("jTextField1");
+        jPanel1.add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, -1, -1));
+
+        jButton3.setForeground(new java.awt.Color(0, 153, 153));
+        jButton3.setText("Ver Tour");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,7 +239,7 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        int row = tabla_cliente.getSelectedRow();
+        /*/int row = tabla_cliente.getSelectedRow();
         String id,name, price, description,activities,lat, lng, address;
         id = (String) tabla_cliente.getValueAt(row,0);
         name = (String) tabla_cliente.getValueAt(row,1);
@@ -191,8 +251,45 @@ public class Client extends javax.swing.JFrame {
         address = (String) tabla_cliente.getValueAt(row,7);
         
         this.getGestion_cliente().createSites(id, name, price, description, activities, lat, lng,address);
-        this.actualizarTabla();
+        this.actualizarTabla(); */
+                try {
+            String a = String.valueOf(api.getDuration(fieldAddress1.getText(),fieldaddress2.getText()));
+            txtDuracion.setText(a+" segundos");
+            String b = String.valueOf(api.getDriveDist(fieldaddress2.getText(),fieldaddress2.getText()));
+            txtDistancia.setText(b+"  metros");
+        } catch (ApiException ex){
+            Logger.getLogger(Empresa.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Empresa.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Empresa.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int indice = tabla_cliente.getSelectedRow();
+        String data = (String)tabla_cliente.getValueAt(indice, 7);
+        fieldAddress1.setText(data);
+        String name = (String)tabla_cliente.getValueAt(indice, 1);
+        txtName.setText(name);
+        String id = (String)tabla_cliente.getValueAt(indice,0);
+        txtide1.setText(id);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int indice = tabla_cliente.getSelectedRow();
+        String data = (String)tabla_cliente.getValueAt(indice, 7);
+        fieldaddress2.setText(data);
+        String id = (String)tabla_cliente.getValueAt(indice,0);
+        txtid2.setText(id);
+        String name = (String)tabla_cliente.getValueAt(indice, 1);
+        txtName2.setText(name);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Tour clienttour = new Tour(txtName.getText(),txtName.getText(),txtName2.getText(),fieldAddress1.getText());
+        clienttour.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +299,11 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JTextField fieldAddress1;
+    private javax.swing.JTextField fieldaddress2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -210,6 +312,10 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JTable tabla_cliente;
     private javax.swing.JTextField txtDistancia;
     private javax.swing.JTextField txtDuracion;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtName2;
+    private javax.swing.JTextField txtid2;
+    private javax.swing.JTextField txtide1;
     // End of variables declaration//GEN-END:variables
 
 }

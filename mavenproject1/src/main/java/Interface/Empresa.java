@@ -132,6 +132,7 @@ public class Empresa extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         txtId1 = new javax.swing.JTextField();
         txtId2 = new javax.swing.JTextField();
+        txtnombre2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -238,7 +239,10 @@ public class Empresa extends javax.swing.JFrame {
         jPanel1.add(txtId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 220, 110, -1));
         jPanel1.add(txtId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 110, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 520));
+        txtnombre2.setText("jTextField1");
+        jPanel1.add(txtnombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -272,6 +276,8 @@ public class Empresa extends javax.swing.JFrame {
         fieldaddress2.setText(data);
         String id = (String)tabla_empresa.getValueAt(indice,0);
         txtId2.setText(id);
+        String name = (String)tabla_empresa.getValueAt(indice, 1);
+        txtnombre2.setText(name);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -301,7 +307,7 @@ public class Empresa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Tour clienttour = new Tour();
+        Tour clienttour = new Tour(txtNombre.getText(),txtNombre.getText(),txtnombre2.getText(),fieldaddress1.getText());
         clienttour.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -329,6 +335,7 @@ public class Empresa extends javax.swing.JFrame {
     private javax.swing.JTextField txtId1;
     private javax.swing.JTextField txtId2;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtnombre2;
     // End of variables declaration//GEN-END:variables
 
 }

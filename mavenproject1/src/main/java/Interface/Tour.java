@@ -13,9 +13,14 @@ import Structures.ListNode;
 import Structures.Site;
 import Table.ModeladorTablas;
 import TextFile.TextFile;
+import java.io.IOException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javafx.scene.input.KeyCode.T;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 /**
  *
  * @author kevca
@@ -25,9 +30,18 @@ public class Tour extends javax.swing.JFrame {
     /**
      * Creates new form Tour
      */
-    public Tour() {
+    public Tour(String a,String b,String c,String d){
         initComponents();
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nombre");
+        model.addColumn("Origen");
+        model.addColumn("Destino");
+        model.addColumn("Direccion");
+        model.addRow(new  Object[]{a,b,c,d});
+        jTable1.setModel(model);
     }
+    
+    
     Api api = new Api();
     TextFile txt = new TextFile();
     
@@ -82,7 +96,6 @@ public class Tour extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,13 +116,14 @@ public class Tour extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 460, 250));
-
-        jButton1.setForeground(new java.awt.Color(0, 153, 153));
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,41 +135,19 @@ public class Tour extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int indice = jTable1.getSelectedRow();
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            api.getLocation((String)jTable1.getValueAt(indice,3));
+        } catch (IOException ex) {
+            Logger.getLogger(Tour.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Tour.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jTable1MouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tour().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
