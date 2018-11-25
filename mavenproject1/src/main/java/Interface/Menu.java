@@ -100,6 +100,13 @@ public class Menu extends javax.swing.JFrame {
         Empresa emp = new Empresa();
         emp.setVisible(true);
         this.setVisible(false);
+        
+         emp.setGestion_sitio(Main.sites);// global lista
+        
+        Object[] columnasSitios = new Object[] {"Id","Nombre","Precio","Descripcion","Actividades","Latitud", "Longitud", "Direccion"};        
+        emp.getTabla_empresa().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));
+        emp.getTabla_empresa().setAutoCreateRowSorter(true);
+        emp.actualizarTabla();
     }//GEN-LAST:event_btnTourEActionPerformed
 
     private void btnGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionActionPerformed
