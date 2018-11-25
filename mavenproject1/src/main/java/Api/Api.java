@@ -7,15 +7,23 @@ import com.google.maps.DistanceMatrixApi;
 import com.google.maps.DistanceMatrixApiRequest;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
+import com.google.maps.GeocodingApiRequest;
+import com.google.maps.GeolocationApi;
+import com.google.maps.GeolocationApiRequest;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 import com.google.maps.model.TravelMode;
+import java.awt.Desktop;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.time.Instant;
+
 
 
 public class Api {
@@ -24,6 +32,15 @@ public class Api {
     private String lat;
     private String lng;
     
+    
+    public void getLocation(String address) throws URISyntaxException, IOException, Exception{
+        
+        double latitude = geocodelat(address);
+        double longitude = geocodelng(address);
+        String result = "https://www.google.com/maps/search/?api=1&query="+latitude+","+longitude;
+        Desktop.getDesktop().browse(new URI(result));
+    
+    }
     public static String lookupAddr(String establishment) throws ApiException, InterruptedException, IOException { // Da la direccion de un lugar
 	
 	//set up key
@@ -38,6 +55,17 @@ public class Api {
 		String address = (results[0].formattedAddress);
 	
 	return address;
+    }
+    public long getDuration(String addrOne, String addrTwo) throws ApiException, InterruptedException, IOException{
+        GeoApiContext distCalcer = new GeoApiContext.Builder()
+		    .apiKey(APIKEY)
+		    .build();
+        DistanceMatrixApiRequest req = DistanceMatrixApi.newRequest(distCalcer);
+        DistanceMatrix result = req.origins(addrOne).destinations(addrTwo).await();
+        
+        long duration = result.rows[0].elements[0].duration.inSeconds;
+        
+        return duration;
     }
     public static long getDriveDist(String addrOne, String addrTwo) throws ApiException, InterruptedException, IOException{ //Distancia en metros de dos lugares
 			
@@ -116,7 +144,7 @@ public class Api {
     }
         return result;
 } 
-    public String geocodelat(final String address) throws Exception {      //Devuelve latitud
+    public double geocodelat(final String address) throws Exception {      //Devuelve latitud
         final GeoApiContext context = new GeoApiContext.Builder()
             .apiKey(APIKEY)
             .build();
@@ -128,9 +156,10 @@ public class Api {
     }   catch (final Exception e) {
             throw e;
     }
-        return lat;
+        double latitude = Double.parseDouble(lat); 
+        return latitude;
 }
-    public String geocodelng(final String address) throws Exception {      //Devuelve longitud
+    public double geocodelng(final String address) throws Exception {      //Devuelve longitud
         final GeoApiContext context = new GeoApiContext.Builder()
             .apiKey(APIKEY)
             .build();
@@ -142,6 +171,7 @@ public class Api {
     }   catch (final Exception e) {
             throw e;
     }
-    return lng;
+    double longitude = Double.parseDouble(lng);    
+    return longitude;
 }
 }

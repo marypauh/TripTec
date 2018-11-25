@@ -184,10 +184,11 @@ public class GestionSitios extends javax.swing.JFrame {
         else if(!fieldAddress.getText().isEmpty()){
             try {
                 //Busca la longitud y latitud de la direccion indicada
+                String latitude = String.valueOf(api.geocodelat(fieldAddress.getText()));
+                fieldLat.setText(latitude);
                 
-                fieldLat.setText(api.geocodelat(fieldAddress.getText()));
-                
-                fieldLong.setText(api.geocodelng(fieldAddress.getText()));
+                String longitude = String.valueOf(api.geocodelat(fieldAddress.getText()));
+                fieldLat.setText(longitude);
             } catch (Exception ex) {
                 Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
             }
