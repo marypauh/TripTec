@@ -106,7 +106,7 @@ public class Menu extends javax.swing.JFrame {
         emp.setVisible(true);
         this.setVisible(false);
         
-         emp.setGestion_sitio(Main.sites);// global lista
+         emp.setGestion_sitios(Main.sites);// global lista
         
         Object[] columnasSitios = new Object[] {"Id","Nombre","Precio","Descripcion","Actividades","Latitud", "Longitud", "Direccion"};        
         emp.getTabla_empresa().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));
