@@ -1,0 +1,3 @@
+Nombre del lugar:  Tirimbina  Descripcion:  A  Precio:  5000  Actividades:  Tirimb  Latitud: 10.4463561  Longitud:  -84.11157899999999   Dirección:  126, Heredia, Sarapiquí
+
+Nombre del lugar:  Tec  Descripcion:  Sitio para morir  Precio:  80000  Actividades:  Tec  Latitud: 9.857247  Longitud:  -83.912313   Dirección:  Calle 15, Avenida 14., 1 km Sur de la Basílica de los Ángeles., Provincia de Cartago, Cartago, 30101

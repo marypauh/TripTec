@@ -196,10 +196,10 @@ public class GestionSitios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe ingresar la longitud y latitud o ingresar la dirección del sitio");
         }
         try {
-            txt.TextFile("Nombre del lugar:  "+fieldName.getText()+"  "+"Descripcion:  "+fieldDescription.getText()+"  "+"Precio:  "+fieldPrice.getText()+"  "+"Actividades:  "+fieldName.getText()+"  "+"Latitud: "+fieldLat.getText()+"  "+"Longitud:  "+fieldLong.getText()+"   "+"Dirección:  "+fieldDirection.getText());
+            txt.TextFile("Nombre del lugar:  "+fieldName.getText()+"  "+"Descripcion:  "+fieldDescription.getText()+"  "+"Precio:  "+fieldPrice.getText()+"  "+"Actividades:  "+fieldAct.getText()+"  "+"Latitu-d: "+fieldLat.getText()+"  "+"Longitud:  "+fieldLong.getText()+"   "+"Dirección:  "+fieldDirection.getText());
         } catch (IOException ex) {
             Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    } 
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
