@@ -5,28 +5,24 @@
  */
 package Structures;
 
-/**
- *
- * @author marip
- */
-public class GestionSites {
-    private LinkedList2<Site> sites;
+public class GestionEdges {
+    private LinkedList2<Edge> sites;
 
-	public LinkedList2<Site> getSites() {
+	public LinkedList2<Edge> getEdges() {
 		return sites;
 	}
     
 
-	public void setSites(LinkedList2<Site> Site) {
-		this.sites = Site;
+	public void setEdges(LinkedList2<Edge> Edge) {
+		this.sites = Edge;
 	}
 
-	public GestionSites() {
+	public GestionEdges() {
 		this.sites= new LinkedList2<>();
 	}
 
-	private Site buscar(String id) {
-        ListNode<Site> temp = sites.getInicio();
+	private Edge buscar(String id) {
+        ListNode<Edge> temp = sites.getInicio();
         for (int i = 0; i < sites.getSize(); i++) {
             if (temp.getElemento().getId().equals(id))
             {
@@ -38,10 +34,10 @@ public class GestionSites {
         return temp.getElemento();
     }
 
-    public void createSites(String id, String name, String price, String description, String activities, String lat, String lng, String address) {
+    public void createEdges(String id, String name,String duration,String distance,String address) {
         //Libros newLibro = new Libros(String issn, String nombre, CategoriasLibros tema, int cantvendida, int cantdisponible, String descripcion,String libreria, double precio);
-        Site newSite = new Site(id, name, price,description, activities, lat, lng, address);
-        this.sites.insertarDetras(newSite);
+        Edge newEdge = new Edge(id, name,duration, distance, address);
+        this.sites.insertarDetras(newEdge);
     }
 
     public void deleteSites(String id) throws Exception {

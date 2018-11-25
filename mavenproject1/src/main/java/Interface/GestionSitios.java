@@ -34,8 +34,14 @@ public class GestionSitios extends javax.swing.JFrame {
 
     Api api = new Api();
    TextFile txt = new TextFile();
-    
-     public GestionSites gestion_sitio; // DEBE ESTAR DECLARADO E INICIALIZADO 
+   
+   public Graph grafo;
+   
+   public Graph getGraph(){
+        return grafo;
+   }
+   
+    public GestionSites gestion_sitio; // DEBE ESTAR DECLARADO E INICIALIZADO 
 
     public GestionSites getGestion_sitios() {
         return gestion_sitio;
@@ -289,8 +295,8 @@ public class GestionSitios extends javax.swing.JFrame {
        }
         
         int id;
-    String id2,name, price, description,activities,lat, lng, address;
-    id = contador++;
+        String id2,name, price, description,activities,lat, lng, address;
+        id = contador++;
         name = this.fieldName.getText();
         description = this.fieldDescription.getText();
         price = this.fieldPrice.getText();
@@ -303,8 +309,7 @@ public class GestionSitios extends javax.swing.JFrame {
         this.getGestion_sitios().createSites(id2, name, price, description, activities, lat, lng,address);
         this.actualizarTabla();
         
-        Graph vertice = new Graph();
-        vertice.addVertex(id);
+        this.getGraph().addVertex(id);
         
         
         

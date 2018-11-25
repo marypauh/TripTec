@@ -1,5 +1,6 @@
 package Main;
 
+import Api.Api;
 import Interface.Menu;
 import Structures.ABB;
 import Structures.GestionSites;
@@ -21,5 +22,7 @@ public class Main {
         //GeocodingResult[] results =  GeocodingApi.geocode(context,"1600 Amphitheatre Parkway Mountain View, CA 94043").await();
         //Gson gson = new GsonBuilder().setPrettyPrinting().create();
         //System.out.println(gson.toJson(results[0].addressComponents));
+        //Api api = new Api();
+        //api.getLocation("Calle 15, Avenida 14., 1 km Sur de la Basílica de los Ángeles., Provincia de Cartago, Cartago, 30101");
     }
 }

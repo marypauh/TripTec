@@ -8,7 +8,9 @@ package Interface;
 import Api.Api;
 import Structures.LinkedList2;
 import Main.Main;
+import Structures.GestionEdges;
 import Structures.GestionSites;
+import Structures.Graph;
 import Structures.ListNode;
 import Structures.Site;
 import Table.ModeladorTablas;
@@ -26,6 +28,15 @@ public class Empresa extends javax.swing.JFrame {
     
     private int contador = 0;
     
+    public Graph grafo;
+   
+
+    public Graph getGraph() {
+        return grafo;
+    }
+    
+    
+    
     public GestionSites gestion_sitio; // DEBE ESTAR DECLARADO E INICIALIZADO 
 
     public GestionSites getGestion_sitios() {
@@ -34,6 +45,16 @@ public class Empresa extends javax.swing.JFrame {
 
     public void setGestion_sitio(GestionSites gestion_sitio) {
         this.gestion_sitio = gestion_sitio;
+    }
+    
+    public GestionEdges gestion_tour; // DEBE ESTAR DECLARADO E INICIALIZADO 
+
+    public GestionEdges getGestion_tour() {
+        return gestion_tour;
+    }
+
+    public void setGestion_sitio(GestionEdges gestion_tour) {
+        this.gestion_tour = gestion_tour;
     }
 
     /**
@@ -107,6 +128,10 @@ public class Empresa extends javax.swing.JFrame {
         fieldaddress1 = new javax.swing.JTextField();
         fieldaddress2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        txtId1 = new javax.swing.JTextField();
+        txtId2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -195,7 +220,25 @@ public class Empresa extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 520));
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 110, -1));
+
+        jButton4.setForeground(new java.awt.Color(0, 153, 153));
+        jButton4.setText("Ver Tour");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, -1, -1));
+        jPanel1.add(txtId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 220, 110, -1));
+        jPanel1.add(txtId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 110, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -214,12 +257,21 @@ public class Empresa extends javax.swing.JFrame {
         int indice = tabla_empresa.getSelectedRow();
         String data = (String)tabla_empresa.getValueAt(indice, 7);
         fieldaddress1.setText(data);
+        String name = (String)tabla_empresa.getValueAt(indice, 1);
+        txtNombre.setText(name);
+        String id = (String)tabla_empresa.getValueAt(indice,0);
+        txtId1.setText(id);
+        
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int indice = tabla_empresa.getSelectedRow();
         String data = (String)tabla_empresa.getValueAt(indice, 7);
         fieldaddress2.setText(data);
+        String id = (String)tabla_empresa.getValueAt(indice,0);
+        txtId2.setText(id);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -236,8 +288,22 @@ public class Empresa extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Empresa.class.getName()).log(Level.SEVERE, null, ex);
         }
+        String id = String.valueOf(contador);
+        int origen = Integer.parseInt(txtId1.getText());
+        int destino = Integer.parseInt(txtId1.getText());
+        //this.getGraph().addEdge(origen, destino,0);
+      //ESTO ES LO QUE NO ME SIRVEthis.getGestion_tour().createEdges(id,txtNombre.getText(),txtDuracion.getText(),txtDistancia.getText(),fieldaddress1.getText());
         
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Tour clienttour = new Tour();
+        clienttour.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,6 +317,7 @@ public class Empresa extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -259,6 +326,9 @@ public class Empresa extends javax.swing.JFrame {
     private javax.swing.JTable tabla_empresa;
     private javax.swing.JTextField txtDistancia;
     private javax.swing.JTextField txtDuracion;
+    private javax.swing.JTextField txtId1;
+    private javax.swing.JTextField txtId2;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
 }
