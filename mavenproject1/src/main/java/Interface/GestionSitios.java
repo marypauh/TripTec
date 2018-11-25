@@ -44,7 +44,7 @@ public class GestionSitios extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        fieldDirection = new javax.swing.JTextArea();
+        fieldAddress = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         fieldLong = new javax.swing.JTextField();
@@ -95,9 +95,9 @@ public class GestionSitios extends javax.swing.JFrame {
         });
         jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, -1, -1));
 
-        fieldDirection.setColumns(20);
-        fieldDirection.setRows(5);
-        jScrollPane1.setViewportView(fieldDirection);
+        fieldAddress.setColumns(20);
+        fieldAddress.setRows(5);
+        jScrollPane1.setViewportView(fieldAddress);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 490, 110));
 
@@ -143,14 +143,14 @@ public class GestionSitios extends javax.swing.JFrame {
         fieldDescription.setRows(5);
         jScrollPane2.setViewportView(fieldDescription);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 170, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 180, 110));
         jPanel1.add(fieldPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 180, -1));
 
         fieldAct.setColumns(20);
         fieldAct.setRows(5);
         jScrollPane3.setViewportView(fieldAct);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 180, -1));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 190, 110));
 
         jButton1.setForeground(new java.awt.Color(0, 153, 153));
         jButton1.setText("Eliminar");
@@ -176,18 +176,18 @@ public class GestionSitios extends javax.swing.JFrame {
             double lat = Double.parseDouble(fieldLat.getText());
             double lng = Double.parseDouble(fieldLong.getText());
             try {
-                fieldDirection.setText(api.reverseGeocode(lat,lng));
+                fieldAddress.setText(api.reverseGeocode(lat,lng));
             } catch (Exception ex) {
                 Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        else if(!fieldDirection.getText().isEmpty()){
+        else if(!fieldAddress.getText().isEmpty()){
             try {
                 //Busca la longitud y latitud de la direccion indicada
                 
-                fieldLat.setText(api.geocodelat(fieldDirection.getText()));
+                fieldLat.setText(api.geocodelat(fieldAddress.getText()));
                 
-                fieldLong.setText(api.geocodelng(fieldDirection.getText()));
+                fieldLong.setText(api.geocodelng(fieldAddress.getText()));
             } catch (Exception ex) {
                 Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -196,7 +196,7 @@ public class GestionSitios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe ingresar la longitud y latitud o ingresar la dirección del sitio");
         }
         try {
-            txt.TextFile("Nombre del lugar:  "+fieldName.getText()+"  "+"Descripcion:  "+fieldDescription.getText()+"  "+"Precio:  "+fieldPrice.getText()+"  "+"Actividades:  "+fieldAct.getText()+"  "+"Latitu-d: "+fieldLat.getText()+"  "+"Longitud:  "+fieldLong.getText()+"   "+"Dirección:  "+fieldDirection.getText());
+            txt.TextFile("Nombre del lugar:  "+fieldName.getText()+"  "+"Descripcion:  "+fieldDescription.getText()+"  "+"Precio:  "+fieldPrice.getText()+"  "+"Actividades:  "+fieldAct.getText()+"  "+"Latitu-d: "+fieldLat.getText()+"  "+"Longitud:  "+fieldLong.getText()+"   "+"Dirección:  "+fieldAddress.getText());
         } catch (IOException ex) {
             Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
     } 
@@ -225,8 +225,8 @@ public class GestionSitios extends javax.swing.JFrame {
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSearch;
     private javax.swing.JTextArea fieldAct;
+    private javax.swing.JTextArea fieldAddress;
     private javax.swing.JTextArea fieldDescription;
-    private javax.swing.JTextArea fieldDirection;
     private javax.swing.JTextField fieldLat;
     private javax.swing.JTextField fieldLong;
     private javax.swing.JTextField fieldName;
