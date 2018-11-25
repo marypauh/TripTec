@@ -33,7 +33,7 @@ public class GestionSitios extends javax.swing.JFrame {
     int contador = main.contador;
 
     Api api = new Api();
-    TextFile txt = new TextFile();
+   TextFile txt = new TextFile();
     
      public GestionSites gestion_sitio; // DEBE ESTAR DECLARADO E INICIALIZADO 
 
@@ -119,7 +119,7 @@ public class GestionSitios extends javax.swing.JFrame {
         fieldName = new javax.swing.JTextField();
         fieldPrice = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
-        btnConsult = new javax.swing.JButton();
+        btnActualzar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabla_sitios = new javax.swing.JTable();
@@ -215,14 +215,14 @@ public class GestionSitios extends javax.swing.JFrame {
         });
         getContentPane().add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, -1, -1));
 
-        btnConsult.setForeground(new java.awt.Color(0, 153, 153));
-        btnConsult.setText("Consultar");
-        btnConsult.addActionListener(new java.awt.event.ActionListener() {
+        btnActualzar.setForeground(new java.awt.Color(0, 153, 153));
+        btnActualzar.setText("Actualizar");
+        btnActualzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultActionPerformed(evt);
+                btnActualzarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnConsult, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, -1, -1));
+        getContentPane().add(btnActualzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -250,15 +250,9 @@ public class GestionSitios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultActionPerformed
-        Consult window;
-        try {
-            window = new Consult();
-            window.setVisible(true);
-        } catch (IOException ex) {
-            Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnConsultActionPerformed
+    private void btnActualzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualzarActionPerformed
+       this.actualizarTabla();
+    }//GEN-LAST:event_btnActualzarActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         if (!fieldLat.getText().isEmpty() && !fieldLong.getText().isEmpty()){
@@ -286,13 +280,13 @@ public class GestionSitios extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Debe ingresar la longitud y latitud o ingresar la dirección del sitio");
         }
-        try {
+       try {
             
-            txt.TextFile("Nombre del lugar:  "+fieldName.getText()+"  "+"Descripcion:  "+fieldDescription.getText()+"  "+"Precio:  "+fieldPrice.getText()+"  "+"Actividades:  "+fieldAct.getText()+"  "+"Latitu-d: "+fieldLat.getText()+"  "+"Longitud:  "+fieldLong.getText()+"   "+"Dirección:  "+fieldAddress.getText());
+           txt.TextFile("Nombre del lugar:  "+fieldName.getText()+"  "+"Descripcion:  "+fieldDescription.getText()+"  "+"Precio:  "+fieldPrice.getText()+"  "+"Actividades:  "+fieldAct.getText()+"  "+"Latitu-d: "+fieldLat.getText()+"  "+"Longitud:  "+fieldLong.getText()+"   "+"Dirección:  "+fieldAddress.getText());
 
         } catch (IOException ex) {
-            Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+          Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
+       }
         
         int id;
     String id2,name, price, description,activities,lat, lng, address;
@@ -336,7 +330,7 @@ public class GestionSitios extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsult;
+    private javax.swing.JButton btnActualzar;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSearch;

@@ -5,18 +5,77 @@
  */
 
 package Interface;
+import Structures.LinkedList2;
+import Main.Main;
+import Structures.GestionSites;
+import Structures.ListNode;
+import Structures.Site;
+import Table.ModeladorTablas;
+import javax.swing.JTable;
 
 /**
  *
  * @author marip
  */
 public class Empresa extends javax.swing.JFrame {
+    
+    
+     public GestionSites gestion_sitio; // DEBE ESTAR DECLARADO E INICIALIZADO 
 
-    /** Creates new form Empresa */
+    public GestionSites getGestion_sitios() {
+        return gestion_sitio;
+    }
+
+    public void setGestion_sitio(GestionSites gestion_sitio) {
+        this.gestion_sitio = gestion_sitio;
+    }
+
+    /**
+     * GENERAR GETTER AND SETTER DE LA TABLA
+     *
+     * @return
+     */
+       public JTable getTabla_empresa() {
+        return tabla_empresa;
+    }
+
+    public void setTabla_empresa(JTable tabla_empresa) {
+        this.tabla_empresa = tabla_empresa;
+    }
+    
+ /** Creates new form Empresa */
     public Empresa() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    
+    public void actualizarTabla() {
+
+        ModeladorTablas.vaciarTabla(tabla_empresa);
+        Object[] filaNueva;
+        ListNode<Site> temp = gestion_sitio.getSites().getInicio();
+        for (int i = 0; i < gestion_sitio.getSites().getSize(); i++) {
+            filaNueva = new Object[]{temp.getElemento().getId(),
+                temp.getElemento().getName(),
+                temp.getElemento().getPrice(),
+                temp.getElemento().getDescription(),
+                temp.getElemento().getActivities(),
+                temp.getElemento().getLat(),
+                temp.getElemento().getLng(),
+                temp.getElemento().getAddress()};
+            ModeladorTablas.nuevaFila(tabla_empresa, filaNueva);
+            temp = temp.getNodoSig();
+        }
+    }
+
+     public void eliminarDesdeTabla() throws Exception {
+        int rowNum = tabla_empresa.getSelectedRow();
+        String elim = ModeladorTablas.obtenerValorCelda(tabla_empresa, rowNum, 0);//ModeladorTablas.obtenerValorCelda(tabla_animales, rowNum, 0);
+        gestion_sitio.deleteSites(elim);
+        actualizarTabla();
+    }
+
+   
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -33,6 +92,11 @@ public class Empresa extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
+        txtDistancia = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtDuracion = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -64,7 +128,7 @@ public class Empresa extends javax.swing.JFrame {
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setForeground(new java.awt.Color(0, 153, 153));
         btnAgregar.setText("Agregar");
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, -1, -1));
 
         btnMenu.setBackground(new java.awt.Color(255, 255, 255));
         btnMenu.setForeground(new java.awt.Color(0, 153, 153));
@@ -74,9 +138,29 @@ public class Empresa extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
+        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, -1, -1));
+        jPanel1.add(txtDistancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 110, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 440));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Distancia");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Duración");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, -1, -1));
+        jPanel1.add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 100, -1));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new java.awt.Color(0, 153, 153));
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -87,6 +171,10 @@ public class Empresa extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.actualizarTabla();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -94,10 +182,15 @@ public class Empresa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tabla_empresa;
+    private javax.swing.JTextField txtDistancia;
+    private javax.swing.JTextField txtDuracion;
     // End of variables declaration//GEN-END:variables
 
 }

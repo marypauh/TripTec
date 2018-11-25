@@ -97,7 +97,9 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTourEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTourEActionPerformed
-        // TODO add your handling code here:
+        Empresa emp = new Empresa();
+        emp.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnTourEActionPerformed
 
     private void btnGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionActionPerformed
