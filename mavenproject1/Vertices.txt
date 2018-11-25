@@ -1,3 +1,16 @@
 Nombre del lugar:  Tirimbina  Descripcion:  A  Precio:  5000  Actividades:  Tirimb  Latitud: 10.4463561  Longitud:  -84.11157899999999   Dirección:  126, Heredia, Sarapiquí
 
 Nombre del lugar:  Tec  Descripcion:  Sitio para morir  Precio:  80000  Actividades:  Tec  Latitud: 9.857247  Longitud:  -83.912313   Dirección:  Calle 15, Avenida 14., 1 km Sur de la Basílica de los Ángeles., Provincia de Cartago, Cartago, 30101
+Nombre del lugar:  Tec  Descripcion:  Palmada  Precio:  0  Actividades:  Morir  Latitu-d: 9.857247  Longitud:  9.857247   Dirección:  Calle 15, Avenida 14., 1 km Sur de la Basílica de los Ángeles., Provincia de Cartago, Cartago, 30101
+Nombre del lugar:  Basilica  Descripcion:  Palmada  Precio:  0  Actividades:  la negra  Latitu-d: 9.862890199999999  Longitud:  9.862890199999999   Dirección:  Calle 1, Provincia de Cartago, Cartago
+Nombre del lugar:  Basilica  Descripcion:  A  Precio:  A  Actividades:  A  Latitu-d: 9.862890199999999  Longitud:  9.862890199999999   Dirección:  Calle 1, Provincia de Cartago, Cartago
+Nombre del lugar:  Tec  Descripcion:  A  Precio:  A  Actividades:  A  Latitu-d: 9.857247  Longitud:  9.857247   Dirección:  Calle 15, Avenida 14., 1 km Sur de la Basílica de los Ángeles., Provincia de Cartago, Cartago, 30101
+Nombre del lugar:  Tec  Descripcion:  A  Precio:  A  Actividades:  A  Latitu-d: 9.857247  Longitud:  -83.912313   Dirección:  Calle 15, Avenida 14., 1 km Sur de la Basílica de los Ángeles., Provincia de Cartago, Cartago, 30101
+Nombre del lugar:  Ruinas  Descripcion:  A  Precio:  A  Actividades:  A  Latitu-d: 9.8642278  Longitud:  -83.9198431   Dirección:  Frente a la Plaza Mayor, Avenida Central, Provincia de Cartago, Cartago
+Nombre del lugar:  Ruinas  Descripcion:    Precio:    Actividades:    Latitu-d: 9.8642278  Longitud:  -83.9198431   Dirección:  Frente a la Plaza Mayor, Avenida Central, Provincia de Cartago, Cartago
+Nombre del lugar:  Ruinas  Descripcion:    Precio:    Actividades:    Latitu-d: 9.862890199999999  Longitud:  -83.9196226   Dirección:  Calle 1, Provincia de Cartago, Cartago
+Nombre del lugar:  Tec  Descripcion:    Precio:    Actividades:    Latitu-d: 9.862890199999999  Longitud:  -83.9196226   Dirección:  Calle 1, Provincia de Cartago, Cartago
+Nombre del lugar:  Tec  Descripcion:    Precio:    Actividades:    Latitu-d: 9.862890199999999  Longitud:  -83.9196226   Dirección:  "Calle 0 4, Provincia de Cartago, Cartago, Costa Rica"
+Nombre del lugar:  Tec  Descripcion:    Precio:    Actividades:    Latitu-d: 9.862890199999999  Longitud:  -83.9196226   Dirección:  "Calle 0 4, Provincia de Cartago, Cartago, Costa Rica"
+Nombre del lugar:  Tec  Descripcion:    Precio:    Actividades:    Latitu-d: 9.862890199999999  Longitud:  -83.9196226   Dirección:  "Calle 0 4, Provincia de Cartago, Cartago, Costa Rica"
+Nombre del lugar:    Descripcion:    Precio:    Actividades:    Latitu-d: 9.862890199999999  Longitud:  -83.9196226   Dirección:  Calle 1, Provincia de Cartago, Cartago

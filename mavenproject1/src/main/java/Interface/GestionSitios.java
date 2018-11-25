@@ -271,8 +271,8 @@ public class GestionSitios extends javax.swing.JFrame {
                 String latitude = String.valueOf(api.geocodelat(fieldAddress.getText()));
                 fieldLat.setText(latitude);
 
-                String longitude = String.valueOf(api.geocodelat(fieldAddress.getText()));
-                fieldLat.setText(longitude);
+                String longitude = String.valueOf(api.geocodelng(fieldAddress.getText()));
+                fieldLong.setText(longitude);
             } catch (Exception ex) {
                 Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
             }
