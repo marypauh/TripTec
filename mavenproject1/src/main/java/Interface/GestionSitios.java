@@ -20,6 +20,7 @@ import Structures.Site;
 import Structures.ListNode;
 import Structures.GestionSites;
 import Main.Main;
+import Structures.Graph;
         
 
 /**
@@ -303,6 +304,11 @@ public class GestionSitios extends javax.swing.JFrame {
         
         this.getGestion_sitios().createSites(id2, name, price, description, activities, lat, lng,address);
         this.actualizarTabla();
+        
+        Graph vertice = new Graph();
+        vertice.addVertex(id);
+        
+        
         
     }//GEN-LAST:event_btnSearchActionPerformed
 

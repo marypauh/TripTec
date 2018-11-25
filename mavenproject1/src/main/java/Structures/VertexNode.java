@@ -7,7 +7,6 @@ package Structures;
 
 /**
  *
- * @author raquelrojas
  */
 import java.util.* ;
 
