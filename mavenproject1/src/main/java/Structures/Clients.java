@@ -19,6 +19,7 @@ public class Clients {
     this.tel = tel;
     this.birthDate = birthDate;
     this.id = id;
+    this.mail = mail;
     }
 
     public String getName() {
