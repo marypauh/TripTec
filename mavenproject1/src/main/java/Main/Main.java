@@ -5,12 +5,14 @@ import Interface.Menu;
 import Structures.ABB;
 import Structures.GestionSites;
 import Structures.ClientTour;
+import Structures.GestionEdges;
 
 
 
 public class Main {
        public static ABB clientsTree = new ABB();
        public static GestionSites sites = new GestionSites();
+       public static GestionEdges edges = new GestionEdges();
        public static ClientTour tour = new ClientTour();
        public static int contador = 0;
 

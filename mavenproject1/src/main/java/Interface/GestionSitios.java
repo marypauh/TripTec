@@ -33,7 +33,7 @@ public class GestionSitios extends javax.swing.JFrame {
     int contador = main.contador;
 
     Api api = new Api();
-   TextFile txt = new TextFile();
+   //TextFile txt = new TextFile();
    
    
     public GestionSites gestion_sitio; // DEBE ESTAR DECLARADO E INICIALIZADO 
@@ -281,13 +281,13 @@ public class GestionSitios extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Debe ingresar la longitud y latitud o ingresar la dirección del sitio");
         }
-       try {
+       //try {
             
-           txt.TextFile("Nombre del lugar:  "+fieldName.getText()+"  "+"Descripcion:  "+fieldDescription.getText()+"  "+"Precio:  "+fieldPrice.getText()+"  "+"Actividades:  "+fieldAct.getText()+"  "+"Latitu-d: "+fieldLat.getText()+"  "+"Longitud:  "+fieldLong.getText()+"   "+"Dirección:  "+fieldAddress.getText());
+          // txt.TextFile("Nombre del lugar:  "+fieldName.getText()+"  "+"Descripcion:  "+fieldDescription.getText()+"  "+"Precio:  "+fieldPrice.getText()+"  "+"Actividades:  "+fieldAct.getText()+"  "+"Latitu-d: "+fieldLat.getText()+"  "+"Longitud:  "+fieldLong.getText()+"   "+"Dirección:  "+fieldAddress.getText());
 
-        } catch (IOException ex) {
-          Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
-       }
+       // } catch (IOException ex) {
+         // Logger.getLogger(GestionSitios.class.getName()).log(Level.SEVERE, null, ex);
+       //}
         
         int id;
         String id2,name, price, description,activities,lat, lng, address;

@@ -314,6 +314,14 @@ public class Empresa extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Tour clienttour = new Tour();
         clienttour.setVisible(true);
+        this.setVisible(false);
+        
+         clienttour.setGestion_edges(Main.edges);// global lista
+        
+        Object[] columnasEdges = new Object[] {"Id","Nombre","Precio","Distancia","Duracion", "Direccion"};        
+        clienttour.getTabla_tour().setModel(ModeladorTablas.generarModeloDeTabla(6, columnasEdges));
+        clienttour.getTabla_tour().setAutoCreateRowSorter(true);
+        clienttour.actualizarTabla();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
