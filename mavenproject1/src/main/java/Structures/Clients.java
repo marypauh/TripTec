@@ -21,7 +21,6 @@ public class Clients {
     this.id = id;
     this.mail = mail;
     }
-
     public String getName() {
         return name;
     }
