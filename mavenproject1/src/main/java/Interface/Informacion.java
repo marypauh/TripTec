@@ -8,7 +8,13 @@ package Interface;
 import Structures.Clients;
 import Interface.ConsultaCliente;
 import Structures.ABB;
+import Structures.GestionEdges;
+import Structures.GestionSites;
+import Structures.ListNode;
+import Structures.Site;
+import Table.ModeladorTablas;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -16,14 +22,67 @@ import javax.swing.JOptionPane;
  */
 public class Informacion extends javax.swing.JFrame {
 
+     private int contador = 0;
+        
+   
+    
+        public GestionSites gestion_sitios; // DEBE ESTAR DECLARADO E INICIALIZADO 
+
+    public GestionSites getGestion_sitios() {
+        return gestion_sitios;
+    }
+
+    public void setGestion_sitios(GestionSites gestion_sitios) {
+        this.gestion_sitios = gestion_sitios;
+    }
+    
+    
+
     /**
-     * Creates new form\
+     * GENERAR GETTER AND SETTER DE LA TABLA
+     *
+     * @return
      */
-    public Informacion() {
+       public JTable getTabla_clientes() {
+        return tabla_clientes;
+    }
+
+    public void setTabla_clientes(JTable tabla_clientes) {
+        this.tabla_clientes = tabla_clientes;
+    }
+    
+           public Informacion() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
+    
+    public void actualizarTabla() {
+
+        ModeladorTablas.vaciarTabla(tabla_clientes);
+        Object[] filaNueva;
+        ListNode<Site> temp = gestion_sitios.getSites().getInicio();
+        for (int i = 0; i < gestion_sitios.getSites().getSize(); i++) {
+            filaNueva = new Object[]{temp.getElemento().getId(),
+                temp.getElemento().getName(),
+                temp.getElemento().getPrice(),
+                temp.getElemento().getDescription(),
+                temp.getElemento().getActivities(),
+                temp.getElemento().getLat(),
+                temp.getElemento().getLng(),
+                temp.getElemento().getAddress()};
+            ModeladorTablas.nuevaFila(tabla_clientes, filaNueva);
+            temp = temp.getNodoSig();
+        }
+    }
+
+     public void eliminarDesdeTabla() throws Exception {
+        int rowNum = tabla_clientes.getSelectedRow();
+        String elim = ModeladorTablas.obtenerValorCelda(tabla_clientes, rowNum, 0);//ModeladorTablas.obtenerValorCelda(tabla_animales, rowNum, 0);
+        gestion_sitios.deleteSites(elim);
+        actualizarTabla();
+    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +112,7 @@ public class Informacion extends javax.swing.JFrame {
         lblCorreo = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tabla_sitios = new javax.swing.JTable();
+        tabla_clientes = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         txtIDinsert = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -128,7 +187,7 @@ public class Informacion extends javax.swing.JFrame {
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("Gestión de Clientes");
 
-        tabla_sitios.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -139,7 +198,7 @@ public class Informacion extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(tabla_sitios);
+        jScrollPane4.setViewportView(tabla_clientes);
 
         jLabel3.setText("Sitios disponibles ");
 
@@ -196,8 +255,7 @@ public class Informacion extends javax.swing.JFrame {
                         .addComponent(jScrollPane4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel3)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -254,7 +312,7 @@ public class Informacion extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -341,7 +399,7 @@ public class Informacion extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JTable tabla_sitios;
+    private javax.swing.JTable tabla_clientes;
     private javax.swing.JTextField textCorreo;
     private javax.swing.JTextField textFecha;
     private javax.swing.JTextField textID;

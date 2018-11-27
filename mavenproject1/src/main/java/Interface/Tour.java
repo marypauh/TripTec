@@ -6,6 +6,7 @@
 package Interface;
 
 import Api.Api;
+import Main.Main;
 import Structures.Edge;
 import Structures.GestionEdges;
 import Structures.GestionSites;
@@ -37,7 +38,7 @@ public class Tour extends javax.swing.JFrame {
     
     
     Api api = new Api();
-    TextFile txt = new TextFile();
+//    TextFile txt = new TextFile();
     
     
     public GestionEdges gestion_edges; // DEBE ESTAR DECLARADO E INICIALIZADO 
@@ -155,6 +156,15 @@ public class Tour extends javax.swing.JFrame {
         Empresa emp = new Empresa();
         emp.setVisible(true);
         this.setVisible(false);
+        
+         emp.setGestion_sitios(Main.sites);// global lista
+         emp.setGestion_edges(Main.edges);
+        
+        
+        Object[] columnasSitios = new Object[] {"Id","Nombre","Precio","Descripcion","Actividades","Latitud", "Longitud", "Direccion"};        
+        emp.getTabla_empresa().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));
+        emp.getTabla_empresa().setAutoCreateRowSorter(true);
+        emp.actualizarTabla();
     }//GEN-LAST:event_btnMenuActionPerformed
 
 

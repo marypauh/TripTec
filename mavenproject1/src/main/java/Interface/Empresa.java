@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
+import Structures.ClientTour;
 
 /**
  *
@@ -27,16 +28,7 @@ import javax.swing.JTable;
 public class Empresa extends javax.swing.JFrame {
     
     private int contador = 0;
-    
-    public Graph grafo;
-   
-
-    public Graph getGraph() {
-        return grafo;
-    }
-    
-    
-    
+        
     public GestionEdges gestion_edges; // DEBE ESTAR DECLARADO E INICIALIZADO 
 
     public GestionEdges getGestion_edges() {
@@ -56,6 +48,7 @@ public class Empresa extends javax.swing.JFrame {
     public void setGestion_sitios(GestionSites gestion_sitios) {
         this.gestion_sitios = gestion_sitios;
     }
+    
     
 
     /**
@@ -127,7 +120,7 @@ public class Empresa extends javax.swing.JFrame {
         fieldaddress2 = new javax.swing.JTextField();
         btnDestino = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        btnTour = new javax.swing.JButton();
         txtId1 = new javax.swing.JTextField();
         txtId2 = new javax.swing.JTextField();
         txtnombre2 = new javax.swing.JTextField();
@@ -209,14 +202,14 @@ public class Empresa extends javax.swing.JFrame {
         });
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 110, -1));
 
-        jButton4.setForeground(new java.awt.Color(0, 153, 153));
-        jButton4.setText("Ver Tour");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnTour.setForeground(new java.awt.Color(0, 153, 153));
+        btnTour.setText("Ver Tour");
+        btnTour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnTourActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, -1, -1));
+        jPanel1.add(btnTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, -1, -1));
         jPanel1.add(txtId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 220, 110, -1));
         jPanel1.add(txtId2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 110, -1));
 
@@ -302,8 +295,12 @@ public class Empresa extends javax.swing.JFrame {
         int origen = Integer.parseInt(txtId1.getText());
         int destino = Integer.parseInt(txtId1.getText());
         String address = fieldaddress1.getText();
-        this.getGraph().addEdge(origen, destino,0);
-     this.getGestion_edges().createEdges(id,nombre,duracion,distancia,address);
+       
+        this.getGestion_edges().createEdges(id,nombre,duracion,distancia,address);
+        
+        Graph graph = new Graph();
+        graph.addEdge(origen, destino,0);
+     
         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -311,18 +308,19 @@ public class Empresa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTourActionPerformed
         Tour clienttour = new Tour();
         clienttour.setVisible(true);
         this.setVisible(false);
         
          clienttour.setGestion_edges(Main.edges);// global lista
         
-        Object[] columnasEdges = new Object[] {"Id","Nombre","Precio","Distancia","Duracion", "Direccion"};        
-        clienttour.getTabla_tour().setModel(ModeladorTablas.generarModeloDeTabla(6, columnasEdges));
+        
+        Object[] columnasEdges = new Object[] {"Id","Nombre","Distancia","Duracion", "Direccion"};        
+        clienttour.getTabla_tour().setModel(ModeladorTablas.generarModeloDeTabla(5, columnasEdges));
         clienttour.getTabla_tour().setAutoCreateRowSorter(true);
         clienttour.actualizarTabla();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnTourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,9 +332,9 @@ public class Empresa extends javax.swing.JFrame {
     private javax.swing.JButton btnDestino;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnOrigen;
+    private javax.swing.JButton btnTour;
     private javax.swing.JTextField fieldaddress1;
     private javax.swing.JTextField fieldaddress2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

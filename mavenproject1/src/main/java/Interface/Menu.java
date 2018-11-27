@@ -107,6 +107,8 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
         
          emp.setGestion_sitios(Main.sites);// global lista
+         emp.setGestion_edges(Main.edges);
+        
         
         Object[] columnasSitios = new Object[] {"Id","Nombre","Precio","Descripcion","Actividades","Latitud", "Longitud", "Direccion"};        
         emp.getTabla_empresa().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));
@@ -131,6 +133,14 @@ public class Menu extends javax.swing.JFrame {
         Informacion info = new Informacion();
         info.setVisible(true);
         this.setVisible(false);
+        
+         info.setGestion_sitios(Main.sites);// global lista
+      
+        
+        Object[] columnasSitios = new Object[] {"Id","Nombre","Precio","Descripcion","Actividades","Latitud", "Longitud", "Direccion"};        
+        info.getTabla_clientes().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));
+        info.getTabla_clientes().setAutoCreateRowSorter(true);
+        info.actualizarTabla();
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnTourCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTourCActionPerformed
