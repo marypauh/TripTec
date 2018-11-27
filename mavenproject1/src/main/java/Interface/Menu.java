@@ -148,7 +148,8 @@ public class Menu extends javax.swing.JFrame {
         cliente.setVisible(true);
         this.setVisible(false);
         
-         cliente.setGestion_cliente(Main.tour);// global lista
+        cliente.setGestion_sitios(Main.sites);
+         cliente.setGestion_edges(Main.edges);// global lista
         
         Object[] columnasSitios = new Object[] {"Id","Nombre","Precio","Descripcion","Actividades","Latitud", "Longitud", "Direccion"};        
         cliente.getTabla_cliente().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));

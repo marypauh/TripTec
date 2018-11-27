@@ -6,7 +6,8 @@
 
 package Interface;
 import Api.Api;
-import Structures.ClientTour;
+import Main.Main;
+import Structures.GestionEdges;
 import Structures.ListNode;
 import Structures.Site;
 import Table.ModeladorTablas;
@@ -15,23 +16,37 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
+import Structures.GestionSites;
+import Structures.Graph;
 
 /**
  *
  * @author marip
  */
 public class Client extends javax.swing.JFrame {
+    public int contador = 0;
     Api api = new Api();
     
-    
-    public ClientTour gestion_cliente; // DEBE ESTAR DECLARADO E INICIALIZADO 
+    public GestionSites gestion_sitios;
 
-    public ClientTour getGestion_cliente() {
-        return gestion_cliente;
+    public GestionSites getGestion_sitios() {
+        return gestion_sitios;
     }
 
-    public void setGestion_cliente(ClientTour gestion_cliente) {
-        this.gestion_cliente = gestion_cliente;
+    public void setGestion_sitios(GestionSites gestion_sitios) {
+        this.gestion_sitios = gestion_sitios;
+    }
+
+    
+    
+    public GestionEdges gestion_edges; // DEBE ESTAR DECLARADO E INICIALIZADO 
+
+    public GestionEdges getGestion_edges() {
+        return gestion_edges;
+    }
+
+    public void setGestion_edges(GestionEdges gestion_edges) {
+        this.gestion_edges = gestion_edges;
     }
 
     /**
@@ -57,8 +72,8 @@ public class Client extends javax.swing.JFrame {
 
         ModeladorTablas.vaciarTabla(tabla_cliente);
         Object[] filaNueva;
-        ListNode<Site> temp = gestion_cliente.getSites().getInicio();
-        for (int i = 0; i < gestion_cliente.getSites().getSize(); i++) {
+        ListNode<Site> temp = gestion_sitios.getSites().getInicio();
+        for (int i = 0; i < gestion_sitios.getSites().getSize(); i++) {
             filaNueva = new Object[]{temp.getElemento().getId(),
                 temp.getElemento().getName(),
                 temp.getElemento().getPrice(),
@@ -75,7 +90,7 @@ public class Client extends javax.swing.JFrame {
      public void eliminarDesdeTabla() throws Exception {
         int rowNum = tabla_cliente.getSelectedRow();
         String elim = ModeladorTablas.obtenerValorCelda(tabla_cliente, rowNum, 0);//ModeladorTablas.obtenerValorCelda(tabla_animales, rowNum, 0);
-        gestion_cliente.deleteSites(elim);
+        gestion_sitios.deleteSites(elim);
         actualizarTabla();
     }
 
@@ -90,30 +105,115 @@ public class Client extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_cliente = new javax.swing.JTable();
-        lblTitulo = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        btnAgregar = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         txtDistancia = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txtDuracion = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
-        fieldAddress1 = new javax.swing.JTextField();
         fieldaddress2 = new javax.swing.JTextField();
+        fieldAddress1 = new javax.swing.JTextField();
         btnOrigen = new javax.swing.JButton();
         btnDestino = new javax.swing.JButton();
         txtide1 = new javax.swing.JTextField();
         txtid2 = new javax.swing.JTextField();
         txtName2 = new javax.swing.JTextField();
         btnTour = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_cliente = new javax.swing.JTable();
+        lblTitulo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMenu.setBackground(new java.awt.Color(255, 255, 255));
+        btnMenu.setForeground(new java.awt.Color(0, 153, 153));
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
+        getContentPane().add(txtDistancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 110, -1));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Distancia");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
+        getContentPane().add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 100, -1));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Duración");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, -1, -1));
+
+        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setForeground(new java.awt.Color(0, 153, 153));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
+
+        txtName.setText("jTextField1");
+        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, -1, -1));
+
+        fieldaddress2.setText("jTextField1");
+        getContentPane().add(fieldaddress2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, -1, -1));
+
+        fieldAddress1.setText("jTextField1");
+        getContentPane().add(fieldAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
+
+        btnOrigen.setForeground(new java.awt.Color(0, 153, 153));
+        btnOrigen.setText("Elegir origen");
+        btnOrigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrigenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
+
+        btnDestino.setForeground(new java.awt.Color(0, 153, 153));
+        btnDestino.setText("Elegir Destino");
+        btnDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDestinoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
+
+        txtide1.setText("jTextField1");
+        getContentPane().add(txtide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, -1, -1));
+
+        txtid2.setText("jTextField1");
+        getContentPane().add(txtid2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
+
+        txtName2.setText("jTextField1");
+        getContentPane().add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, -1, -1));
+
+        btnTour.setForeground(new java.awt.Color(0, 153, 153));
+        btnTour.setText("Ver Tour");
+        btnTour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTourActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
+
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setForeground(new java.awt.Color(0, 153, 153));
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
 
         tabla_cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,92 +237,6 @@ public class Client extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setForeground(new java.awt.Color(0, 153, 153));
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
-
-        btnMenu.setBackground(new java.awt.Color(255, 255, 255));
-        btnMenu.setForeground(new java.awt.Color(0, 153, 153));
-        btnMenu.setText("Menu");
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
-        jPanel1.add(txtDistancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 110, -1));
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Distancia");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
-
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Duración");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, -1, -1));
-        jPanel1.add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 100, -1));
-
-        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
-        btnActualizar.setForeground(new java.awt.Color(0, 153, 153));
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
-
-        txtName.setText("jTextField1");
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, -1, -1));
-
-        fieldAddress1.setText("jTextField1");
-        jPanel1.add(fieldAddress1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
-
-        fieldaddress2.setText("jTextField1");
-        jPanel1.add(fieldaddress2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, -1, -1));
-
-        btnOrigen.setForeground(new java.awt.Color(0, 153, 153));
-        btnOrigen.setText("Elegir origen");
-        btnOrigen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrigenActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
-
-        btnDestino.setForeground(new java.awt.Color(0, 153, 153));
-        btnDestino.setText("Elegir Destino");
-        btnDestino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDestinoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
-
-        txtide1.setText("jTextField1");
-        jPanel1.add(txtide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 240, -1, -1));
-
-        txtid2.setText("jTextField1");
-        jPanel1.add(txtid2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
-
-        txtName2.setText("jTextField1");
-        jPanel1.add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, -1, -1));
-
-        btnTour.setForeground(new java.awt.Color(0, 153, 153));
-        btnTour.setText("Ver Tour");
-        btnTour.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTourActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnTour, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 480));
 
         pack();
@@ -239,24 +253,12 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        /*/int row = tabla_cliente.getSelectedRow();
-        String id,name, price, description,activities,lat, lng, address;
-        id = (String) tabla_cliente.getValueAt(row,0);
-        name = (String) tabla_cliente.getValueAt(row,1);
-        description = (String) tabla_cliente.getValueAt(row,2);
-        price = (String) tabla_cliente.getValueAt(row,3);
-        activities = (String) tabla_cliente.getValueAt(row,4);
-        lat = (String) tabla_cliente.getValueAt(row,5);
-        lng = (String) tabla_cliente.getValueAt(row,6);
-        address = (String) tabla_cliente.getValueAt(row,7);
-        
-        this.getGestion_cliente().createSites(id, name, price, description, activities, lat, lng,address);
-        this.actualizarTabla(); */
-                try {
+        Api api = new Api();
+        try {
             String a = String.valueOf(api.getDuration(fieldAddress1.getText(),fieldaddress2.getText()));
-            txtDuracion.setText(a+" segundos");
-            String b = String.valueOf(api.getDriveDist(fieldaddress2.getText(),fieldaddress2.getText()));
-            txtDistancia.setText(b+"  metros");
+            txtDuracion.setText(a);
+            String b = String.valueOf(api.getDriveDist(fieldAddress1.getText(),fieldaddress2.getText()));
+            txtDistancia.setText(b);
         } catch (ApiException ex){
             Logger.getLogger(Empresa.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
@@ -264,6 +266,18 @@ public class Client extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Empresa.class.getName()).log(Level.SEVERE, null, ex);
         }
+        String id = String.valueOf(contador);
+        String nombre = txtName.getText();
+       String duracion = txtDuracion.getText();
+       String distancia = txtDistancia.getText();
+        int origen = Integer.parseInt(txtide1.getText());
+        int destino = Integer.parseInt(txtid2.getText());
+        String address = fieldAddress1.getText();
+       
+        this.getGestion_edges().createEdges(id,nombre,duracion,distancia,address);
+        
+        Graph graph = new Graph();
+        graph.addEdge(origen, destino,0);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrigenActionPerformed
@@ -287,9 +301,18 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDestinoActionPerformed
 
     private void btnTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTourActionPerformed
-        Tour clienttour = new Tour();
+        TourClient clienttour = new TourClient();
         clienttour.setVisible(true);
-        this.setVisible(false);
+         this.setVisible(false);
+        
+         clienttour.setGestion_edges(Main.edges);// global lista
+        
+        
+        Object[] columnasEdges = new Object[] {"Id","Nombre","Distancia","Duracion", "Direccion"};        
+        clienttour.getTabla_tour().setModel(ModeladorTablas.generarModeloDeTabla(5, columnasEdges));
+        clienttour.getTabla_tour().setAutoCreateRowSorter(true);
+        clienttour.actualizarTabla();
+        
     }//GEN-LAST:event_btnTourActionPerformed
 
     /**
