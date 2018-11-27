@@ -6,24 +6,79 @@
 package Interface;
 
 import Structures.ABB;
+import Structures.ClientTour;
 import Structures.Clients;
+import Structures.GestionSites;
+import Structures.ListNode;
+import Structures.Site;
+import Table.ModeladorTablas;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
  * @author raquelrojas
  */
 public class ConsultaCliente extends javax.swing.JFrame {
+    
+    public ClientTour gestion_tour;
 
-    public ConsultaCliente() {
-        initComponents();
-        
-
-        
-
+    public ClientTour getGestion_tour() {
+        return gestion_tour;
     }
+
+    public void setGestion_tour(ClientTour gestion_tour) {
+        this.gestion_tour = gestion_tour;
+    }
+    
+
+    /**
+     * GENERAR GETTER AND SETTER DE LA TABLA
+     *
+     * @return
+     */
+       public JTable getTabla_clientes() {
+        return tabla_clientes;
+    }
+
+    public void setTabla_clientes(JTable tabla_cliente) {
+        this.tabla_clientes = tabla_cliente;
+    }
+    
+      public ConsultaCliente() {
+       initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    
+    public void actualizarTabla() {
+
+        ModeladorTablas.vaciarTabla(tabla_clientes);
+        Object[] filaNueva;
+        ListNode<Site> temp = gestion_tour.getSites().getInicio();
+        for (int i = 0; i < gestion_tour.getSites().getSize(); i++) {
+            filaNueva = new Object[]{temp.getElemento().getId(),
+                temp.getElemento().getName(),
+                temp.getElemento().getPrice(),
+                temp.getElemento().getDescription(),
+                temp.getElemento().getActivities(),
+                temp.getElemento().getLat(),
+                temp.getElemento().getLng(),
+                temp.getElemento().getAddress()};
+            ModeladorTablas.nuevaFila(tabla_clientes, filaNueva);
+            temp = temp.getNodoSig();
+        }
+    }
+
+     public void eliminarDesdeTabla() throws Exception {
+        int rowNum = tabla_clientes.getSelectedRow();
+        String elim = ModeladorTablas.obtenerValorCelda(tabla_clientes, rowNum, 0);//ModeladorTablas.obtenerValorCelda(tabla_animales, rowNum, 0);
+        gestion_tour.deleteSites(elim);
+        actualizarTabla();
+    }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -45,7 +100,7 @@ public class ConsultaCliente extends javax.swing.JFrame {
         BtnBuscar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_cliente = new javax.swing.JTable();
+        tabla_clientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,7 +146,7 @@ public class ConsultaCliente extends javax.swing.JFrame {
 
         jLabel7.setText("Inserte cédula del cliente ");
 
-        tabla_cliente.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -102,7 +157,7 @@ public class ConsultaCliente extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabla_cliente);
+        jScrollPane1.setViewportView(tabla_clientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,9 +204,9 @@ public class ConsultaCliente extends javax.swing.JFrame {
                         .addGap(73, 73, 73)
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(198, Short.MAX_VALUE))
+                        .addGap(100, 100, 100)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,9 +238,9 @@ public class ConsultaCliente extends javax.swing.JFrame {
                     .addComponent(txtNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVolver)
                 .addGap(14, 14, 14))
         );
@@ -218,6 +273,8 @@ public class ConsultaCliente extends javax.swing.JFrame {
         txtNacimiento.setText(client.getBirthDate());
         txtEmail.setText(client.getMail());
         txtTel.setText(client.getTel());
+        
+        this.actualizarTabla();
         }
     }//GEN-LAST:event_BtnBuscarActionPerformed
 
@@ -238,7 +295,7 @@ public class ConsultaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_cliente;
+    private javax.swing.JTable tabla_clientes;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNacimiento;

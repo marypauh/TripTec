@@ -26,12 +26,12 @@ import sun.swing.table.DefaultTableCellHeaderRenderer;
  *
  * @author kevca
  */
-public class Tour extends javax.swing.JFrame {
+public class TourClient extends javax.swing.JFrame {
 
     /**
      * Creates new form Tour
      */
-    public Tour(){
+    public TourClient(){
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -123,7 +123,7 @@ public class Tour extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tour de la empresa");
+        jLabel1.setText("Tour del Cliente");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
 
         btnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -146,14 +146,14 @@ public class Tour extends javax.swing.JFrame {
         try {
             api.getLocation((String)tabla_tour.getValueAt(indice,3));
         } catch (IOException ex) {
-            Logger.getLogger(Tour.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TourClient.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(Tour.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TourClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tabla_tourMouseClicked
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        Empresa emp = new Empresa();
+        Client emp = new Client();
         emp.setVisible(true);
         this.setVisible(false);
         
@@ -162,8 +162,8 @@ public class Tour extends javax.swing.JFrame {
         
         
         Object[] columnasSitios = new Object[] {"Id","Nombre","Precio","Descripcion","Actividades","Latitud", "Longitud", "Direccion"};        
-        emp.getTabla_empresa().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));
-        emp.getTabla_empresa().setAutoCreateRowSorter(true);
+        emp.getTabla_cliente().setModel(ModeladorTablas.generarModeloDeTabla(8, columnasSitios));
+        emp.getTabla_cliente().setAutoCreateRowSorter(true);
         emp.actualizarTabla();
     }//GEN-LAST:event_btnMenuActionPerformed
 

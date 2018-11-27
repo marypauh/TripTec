@@ -6,6 +6,7 @@ import Structures.ABB;
 import Structures.GestionSites;
 import Structures.ClientTour;
 import Structures.GestionEdges;
+import Structures.Clients;
 
 
 
@@ -14,6 +15,7 @@ public class Main {
        public static GestionSites sites = new GestionSites();
        public static GestionEdges edges = new GestionEdges();
        public static ClientTour tour = new ClientTour();
+      // public static Clients client = new Clients();
        public static int contador = 0;
 
     public static void main(String[] args) throws Exception {

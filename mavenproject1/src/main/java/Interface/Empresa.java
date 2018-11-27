@@ -309,7 +309,7 @@ public class Empresa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTourActionPerformed
-        Tour clienttour = new Tour();
+        TourEmp clienttour = new TourEmp();
         clienttour.setVisible(true);
         this.setVisible(false);
         
