@@ -19,8 +19,8 @@ public class Node {
         this.weight = 0;
     }
 
-    public Node(int v, int p){
-        this.vertex = v;
+    public Node(int  site, int p){
+        this.vertex = site;
         this.weight = p;
     }
 

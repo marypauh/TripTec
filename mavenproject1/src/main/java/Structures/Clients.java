@@ -12,7 +12,7 @@ package Structures;
 public class Clients {
     String name, tel, mail,birthDate;
     int id;
-    Graph wishList;
+    GestionSites wishList;
     
     public Clients(String name, String tel, String mail,String birthDate, int id){
     this.name = name;
@@ -61,13 +61,17 @@ public class Clients {
         this.id = id;
     }
 
-    public Graph getWishList() {
+    public GestionSites getWishList() {
         return wishList;
     }
 
-    public void setWishList(Graph wishList) {
+    public void setWishList(GestionSites wishList) {
         this.wishList = wishList;
     }
+    public void addWishList(String id, String name, String price, String description, String activities, String lat, String lng,String address){
+    wishList.createSites(id,name,price,description,activities,lat,lng,address);}
     
-    
+    public void printWishlist(){
+    System.out.println(wishList.toString());
+    }
 }

@@ -15,6 +15,7 @@ import Structures.Site;
 import Table.ModeladorTablas;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -372,12 +373,31 @@ public class Informacion extends javax.swing.JFrame {
         }
         else{
         Clients client = Main.Main.clientsTree.search(id).getRoot();
-        //client. aquí se inserta el sitio en la wish list del cliente
-        }
+        int indice = tabla_clientes.getSelectedRow();//para obtener la fila seleccionada
+        String idSite = tabla_clientes.getValueAt(indice, 0).toString();
+        String name = tabla_clientes.getValueAt(indice, 1).toString();
+        String price = tabla_clientes.getValueAt(indice, 2).toString();
+        String description = tabla_clientes.getValueAt(indice, 3).toString();
+        String activities = tabla_clientes.getValueAt(indice, 4).toString();
+        String lat = tabla_clientes.getValueAt(indice, 5).toString();
+        String lng = tabla_clientes.getValueAt(indice, 6).toString();
+        String address = tabla_clientes.getValueAt(indice, 7).toString();
+        JOptionPane.showMessageDialog(null, "Se ha agregado el sitio: ");
+
+        
+        client.addWishList(idSite, name, price, description, activities, lat, lng, address);
+        JOptionPane.showMessageDialog(null, "Se ha agregado el sitio: "+ name );
+
+        client.printWishlist();
+        JOptionPane.showMessageDialog(null, "Se ha agregado el sitio: "+ name + " a la wish list de: " + client.getName() );
+
+ 
+
+        
 
     }//GEN-LAST:event_BtnAVisitarActionPerformed
     }
-    /**
+    }    /**
      * @param args the command line arguments
      */
 
