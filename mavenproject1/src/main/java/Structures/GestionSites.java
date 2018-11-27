@@ -10,11 +10,16 @@ package Structures;
  * @author marip
  */
 public class GestionSites {
+    int size;
     private LinkedList2<Site> sites;
 
 	public LinkedList2<Site> getSites() {
 		return sites;
 	}
+
+    public int getSize() {
+        return size;
+    }
     
 
 	public void setSites(LinkedList2<Site> Site) {
@@ -42,10 +47,12 @@ public class GestionSites {
         //Libros newLibro = new Libros(String issn, String nombre, CategoriasLibros tema, int cantvendida, int cantdisponible, String descripcion,String libreria, double precio);
         Site newSite = new Site(id, name, price,description, activities, lat, lng, address);
         this.sites.insertarDetras(newSite);
+        size++;
     }
 
     public void deleteSites(String id) throws Exception {
         sites.eliminarNodoEspecifico(buscar(id));
+        size--;
     }
 
     public String consultarSites() {
